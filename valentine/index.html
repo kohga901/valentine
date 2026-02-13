@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valentine</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+  <div class="stars"></div>
+
+  <!-- Page 1 -->
+  <section id="passwordView" class="view active">
+    <div class="center">
+      <div class="card">
+        <h1>🔐 Password Check</h1>
+        <div class="sub">Enter the secret password to continue.</div>
+        <div class="row">
+          <input id="pw" type="password" placeholder="Password" autocomplete="off" />
+          <button id="pwBtn" class="btn-yes">Enter</button>
+        </div>
+        <div id="pwErr" class="error" style="display:none;">Wrong password 😼</div>
+        <div class="hint">(hint: it’s our most common nickname for each other 😼)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 2 -->
+  <section id="valentineView" class="view">
+      <img src="rose.png" class="corner-rose top-left">
+      <img src="rose.png" class="corner-rose top-right">
+      <img src="rose.png" class="corner-rose bottom-left">
+      <img src="rose.png" class="corner-rose bottom-right">
+      
+    <canvas id="confetti"></canvas>
+
+    <div id="playArea"></div>
+
+    <div id="successBlock">
+      <div>
+        <!-- Bouquet SVG -->
+        <div class="bouquetWrap" aria-hidden="true">
+          <img src="bouquet.png" class="pixel" alt="Bouquet">
+
+            <!-- wrapper -->
+            <path d="M70 240
+                     C60 290, 90 350, 170 392
+                     C250 350, 280 290, 270 240
+                     C245 250, 220 262, 170 262
+                     C120 262, 95 250, 70 240 Z"
+                  fill="#ff77b8" opacity="0.95"/>
+            <path d="M70 240
+                     C95 300, 125 335, 170 362
+                     C215 335, 245 300, 270 240
+                     C235 260, 205 275, 170 275
+                     C135 275, 105 260, 70 240 Z"
+                  fill="#ffc0dd" opacity="0.9"/>
+            <path d="M110 305 C140 330, 200 330, 230 305
+                     C210 360, 130 360, 110 305 Z"
+                  fill="#ff4fa8" opacity="0.85"/>
+
+            <!-- stems -->
+            <g stroke="#2bb673" stroke-width="8" stroke-linecap="round" opacity="0.9">
+              <path d="M170 270 C155 220, 130 190, 105 160"/>
+              <path d="M170 270 C170 215, 170 185, 170 150"/>
+              <path d="M170 270 C185 220, 210 190, 235 160"/>
+            </g>
+
+            <!-- leaves -->
+            <g fill="#2ecc71" opacity="0.95">
+              <path d="M128 210 C105 205, 92 190, 84 170 C106 168, 122 180, 128 210 Z"/>
+              <path d="M212 210 C235 205, 248 190, 256 170 C234 168, 218 180, 212 210 Z"/>
+              <path d="M170 210 C150 200, 142 180, 140 160 C160 165, 170 182, 170 210 Z"/>
+            </g>
+
+            <!-- roses -->
+            <g>
+              <!-- left rose -->
+              <g transform="translate(92,118) rotate(-10)">
+                <circle cx="0" cy="0" r="30" fill="#ff2b6a"/>
+                <path d="M-24 -2 C-10 -26, 10 -26, 24 -2 C10 14, -10 14, -24 -2 Z" fill="#ff5a90"/>
+                <path d="M-16 8 C-6 -8, 6 -8, 16 8 C6 18, -6 18, -16 8 Z" fill="#ff89b3"/>
+                <circle cx="0" cy="2" r="6" fill="#ffb3d0"/>
+              </g>
+              <!-- center rose -->
+              <g transform="translate(170,108)">
+                <circle cx="0" cy="0" r="36" fill="#ff2b6a"/>
+                <path d="M-30 -2 C-12 -30, 12 -30, 30 -2 C12 16, -12 16, -30 -2 Z" fill="#ff5a90"/>
+                <path d="M-20 10 C-8 -10, 8 -10, 20 10 C8 22, -8 22, -20 10 Z" fill="#ff89b3"/>
+                <circle cx="0" cy="4" r="7" fill="#ffd1e4"/>
+              </g>
+              <!-- right rose -->
+              <g transform="translate(248,118) rotate(10)">
+                <circle cx="0" cy="0" r="30" fill="#ff2b6a"/>
+                <path d="M-24 -2 C-10 -26, 10 -26, 24 -2 C10 14, -10 14, -24 -2 Z" fill="#ff5a90"/>
+                <path d="M-16 8 C-6 -8, 6 -8, 16 8 C6 18, -6 18, -16 8 Z" fill="#ff89b3"/>
+                <circle cx="0" cy="2" r="6" fill="#ffb3d0"/>
+              </g>
+
+              <!-- small roses -->
+              <g transform="translate(130,158) rotate(-6) scale(.78)">
+                <circle cx="0" cy="0" r="28" fill="#ff2b6a"/>
+                <path d="M-22 -2 C-9 -24, 9 -24, 22 -2 C9 13, -9 13, -22 -2 Z" fill="#ff5a90"/>
+                <path d="M-14 8 C-5 -7, 5 -7, 14 8 C5 16, -5 16, -14 8 Z" fill="#ff89b3"/>
+              </g>
+              <g transform="translate(210,158) rotate(6) scale(.78)">
+                <circle cx="0" cy="0" r="28" fill="#ff2b6a"/>
+                <path d="M-22 -2 C-9 -24, 9 -24, 22 -2 C9 13, -9 13, -22 -2 Z" fill="#ff5a90"/>
+                <path d="M-14 8 C-5 -7, 5 -7, 14 8 C5 16, -5 16, -14 8 Z" fill="#ff89b3"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div class="yay">Yayayayayay!</div>
+        <p id="smallText" class="cuteText">
+          Thank you for being my valentine! I love you so much bubu. More gifts are on the way oki?. Mmmmmmmmwah.
+        </p>
+      </div>
+    </div>
+
+    <div id="bottomPanel">
+      <div id="questionCard" class="card">
+        <h2>Ellooo!!! Only you would know the password bubu! 💘</h2>
+        <div class="sub">Sho, my question to you is, will you be my valentine?</div>
+        <div class="row">
+          <button id="yesBtn" class="btn-yes">Yes</button>
+          <button id="noBtn" class="btn-no">No</button>
+        </div>
+        <div id="noText"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ ADD THIS -->
+  <script src="script.js"></script>
+</body>
+</html>
